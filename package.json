@@ -1,0 +1,63 @@
+{
+  "name": "huhm",
+  "version": "1.0.0",
+  "description": "Framework CSS moderno con sintaxis intuitiva y compilación JIT",
+  "main": "src/compiler.js",
+  "bin": {
+    "huhm": "./bin/flexcss.js"
+  },
+  "exports": {
+    ".": "./src/compiler.js",
+    "./plugins/vite": "./plugins/vite.js",
+    "./plugins/postcss": "./plugins/postcss.js"
+  },
+  "scripts": {
+    "build": "node src/cli.js build",
+    "dev": "node src/cli.js watch",
+    "init": "node src/cli.js init"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "jit",
+    "utility-first",
+    "postcss",
+    "vite",
+    "responsive",
+    "tailwind-alternative"
+  ],
+  "author": "Hugo Ubaldo Hernández Murillo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuGuiTo2083/HUHM.git"
+  },
+  "homepage": "https://github.com/HuGuiTo2083/HUHM#readme",
+  "bugs": {
+    "url": "https://github.com/HuGuiTo2083/HUHM/issues"
+  },
+  "files": [
+    "src",
+    "plugins",
+    "bin",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "fast-glob": "^3.3.2",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.31",
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
