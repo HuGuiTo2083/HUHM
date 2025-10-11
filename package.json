@@ -14,7 +14,10 @@
   "scripts": {
     "build": "node src/cli.js build",
     "dev": "node src/cli.js watch",
-    "init": "node src/cli.js init"
+    "init": "node src/cli.js init",
+    "build:browser": "node scripts/build-browser.js",
+    "minify": "node scripts/minify.js",
+    "build:cdn": "npm run build:browser && npm run minify"
   },
   "keywords": [
     "css",
@@ -42,16 +45,18 @@
     "bin",
     "templates",
     "README.md",
+    "dist",
     "LICENSE"
   ],
   "dependencies": {
     "chokidar": "^3.5.3",
+    "commander": "^11.1.0",
     "fast-glob": "^3.3.2",
     "picocolors": "^1.0.0",
-    "postcss": "^8.4.31",
-    "commander": "^11.1.0"
+    "postcss": "^8.0.0"
   },
   "devDependencies": {
+    "terser": "^5.44.0",
     "vite": "^5.0.0"
   },
   "peerDependencies": {

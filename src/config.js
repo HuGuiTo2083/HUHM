@@ -5,7 +5,7 @@ class Config {
   constructor() {
     this.defaultConfig = {
       content: ['./src/**/*.{html,js,jsx,ts,tsx,vue}'],
-      output: './dist/flexcss.css',
+      output: './dist/HUHM.css',
       breakpoints: {
         'Phone': '(max-width: 767px)',
         'Tablet': '(min-width: 768px) and (max-width: 1023px)',

@@ -53,8 +53,8 @@ class Generator {
     if (!this.config.compiler.comments) return '';
     
     return `/*
- * Generado por FlexCSS Framework
- * https://github.com/tu-usuario/flexcss
+ * Generado por HUHM Framework
+ * https://github.com/HuGuiTo2083/HUHM
  * Fecha: ${new Date().toISOString()}
  */
 
