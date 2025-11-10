@@ -2,24 +2,24 @@
 
 const { program } = require('commander');
 const colors = require('picocolors');
-const FlexCSSCompiler = require('../src/compiler');
-const Config = require('../src/config');
+const HUHMCompiler = require('./compiler');
+const Config = require('./config');
 const packageJson = require('../package.json');
 
 program
-  .name('flexcss')
-  .description('FlexCSS Framework - CSS moderno con sintaxis intuitiva')
+  .name('huhm')
+  .description('HUHM Framework - CSS moderno con sintaxis intuitiva')
   .version(packageJson.version);
 
 // Comando: init
 program
   .command('init')
-  .description('Crea un archivo de configuración flexcss.config.js')
+  .description('Crea un archivo de configuración huhm.config.js')
   .action(() => {
     try {
       Config.createTemplate();
       console.log(colors.green('✅ Configuración creada exitosamente'));
-      console.log(colors.dim('\nPuedes personalizar tu configuración editando flexcss.config.js'));
+      console.log(colors.dim('\nPuedes personalizar tu configuración editando huhm.config.js'));
     } catch (error) {
       console.error(colors.red('❌ Error:'), error.message);
       process.exit(1);
@@ -33,7 +33,7 @@ program
   .option('-c, --config <path>', 'Ruta al archivo de configuración')
   .action(async (options) => {
     try {
-      const compiler = new FlexCSSCompiler(options.config);
+      const compiler = new HUHMCompiler(options.config);
       await compiler.build();
     } catch (error) {
       console.error(colors.red('❌ Error:'), error.message);
@@ -49,7 +49,7 @@ program
   .option('-c, --config <path>', 'Ruta al archivo de configuración')
   .action(async (options) => {
     try {
-      const compiler = new FlexCSSCompiler(options.config);
+      const compiler = new HUHMCompiler(options.config);
       await compiler.watch();
     } catch (error) {
       console.error(colors.red('❌ Error:'), error.message);

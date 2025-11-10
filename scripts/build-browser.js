@@ -52,7 +52,7 @@ fs.writeFileSync(outputPath, finalContent, 'utf8');
 const sizeKB = (fs.statSync(outputPath).size / 1024).toFixed(2);
 
 console.log(pc.green('✅ Build completado exitosamente\n'));
-console.log(pc.dim('   Archivo: ') + pc.white('dist/flexcss.js'));
+    console.log(pc.dim('   Archivo: ') + pc.white('dist/HUHM.js'));
 console.log(pc.dim('   Tamaño:  ') + pc.yellow(`${sizeKB} KB`));
 console.log(pc.dim('   Versión: ') + pc.cyan(`v${packageJson.version}`));
 console.log('');

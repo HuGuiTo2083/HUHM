@@ -10,7 +10,12 @@ class Config {
         'Phone': '(max-width: 767px)',
         'Tablet': '(min-width: 768px) and (max-width: 1023px)',
         'Computer': '(min-width: 1024px)',
-        'Desktop': '(min-width: 1440px)'
+        'Desktop': '(min-width: 1440px)',
+        // Nuevos breakpoints con sintaxis @
+        'mobile': '(max-width: 767px)',
+        'tablets': '(min-width: 768px) and (max-width: 1023px)',
+        'midLaptop': '(min-width: 1024px) and (max-width: 1439px)',
+        'largeScreen': '(min-width: 1440px)'
       },
       properties: {
         'w': 'width',
@@ -18,7 +23,10 @@ class Config {
         'p': 'padding',
         'm': 'margin',
         'bg': 'background',
+        'bgColor': 'background-color',
+        'bColor': 'border-color',
         'text': 'color',
+        'textColor': 'color',
         'rounded': 'border-radius',
         'border': 'border-width'
       },
@@ -35,12 +43,15 @@ class Config {
   }
 
   /**
-   * Carga la configuración desde flexcss.config.js
+   * Carga la configuración desde huhm.config.js
    */
   load(configPath = null) {
     // Busca el archivo de configuración
     const possiblePaths = [
       configPath,
+      path.join(process.cwd(), 'huhm.config.js'),
+      path.join(process.cwd(), 'huhm.config.cjs'),
+      // Por compatibilidad, también busca flexcss.config.js
       path.join(process.cwd(), 'flexcss.config.js'),
       path.join(process.cwd(), 'flexcss.config.cjs')
     ].filter(Boolean);
@@ -57,7 +68,7 @@ class Config {
       }
     }
 
-    console.warn('⚠️  No se encontró flexcss.config.js, usando configuración por defecto');
+    console.warn('⚠️  No se encontró huhm.config.js, usando configuración por defecto');
     return this.defaultConfig;
   }
 
@@ -102,8 +113,8 @@ class Config {
   /**
    * Crea un archivo de configuración de ejemplo
    */
-  static createTemplate(targetPath = './flexcss.config.js') {
-    const templatePath = path.join(__dirname, '../templates/flexcss.config.js');
+  static createTemplate(targetPath = './huhm.config.js') {
+    const templatePath = path.join(__dirname, '../templates/huhm.config.js');
     
     if (fs.existsSync(targetPath)) {
       throw new Error(`El archivo ${targetPath} ya existe`);

@@ -7,7 +7,7 @@
     // Importar o copiar la lógica de tu parser.js y generator.js
     // Como esto será un bundle, puedes incluir la lógica aquí o importarla
     
-    // Configuración por defecto (copia de tu flexcss.config.js template)
+    // Configuración por defecto (copia de tu huhm.config.js template)
     const defaultConfig = {
       properties: {
         'p': 'padding',
@@ -286,7 +286,8 @@
     }
   
     // Exponer globalmente
-    window.FlexCSS = FlexCSS;
+    window.HUHM = FlexCSS;
+    window.FlexCSS = FlexCSS; // Mantener por compatibilidad
   
     // Para compatibilidad con module bundlers
     if (typeof module !== 'undefined' && module.exports) {

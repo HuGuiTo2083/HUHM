@@ -1,35 +1,35 @@
-const FlexCSSCompiler = require('../src/compiler');
+const HUHMCompiler = require('../src/compiler');
 const path = require('path');
 
 /**
- * Plugin de Vite para FlexCSS
+ * Plugin de Vite para HUHM Framework
  * 
  * Uso en vite.config.js:
  * 
- * import flexcss from 'flexcss-framework/plugins/vite'
+ * import huhm from 'huhm-framework/plugins/vite'
  * 
  * export default {
  *   plugins: [
- *     flexcss()
+ *     huhm()
  *   ]
  * }
  */
-function flexcssPlugin(options = {}) {
+function huhmPlugin(options = {}) {
   let compiler;
   let config;
 
   return {
-    name: 'vite-plugin-flexcss',
+    name: 'vite-plugin-huhm',
 
     // Se ejecuta al iniciar Vite
     configResolved(resolvedConfig) {
       config = resolvedConfig;
-      compiler = new FlexCSSCompiler(options.config);
+      compiler = new HUHMCompiler(options.config);
     },
 
     // Compila CSS al iniciar el servidor de desarrollo
     async buildStart() {
-      console.log('🚀 FlexCSS: Compilando...');
+      console.log('🚀 HUHM: Compilando...');
       await compiler.build();
     },
 
@@ -43,7 +43,7 @@ function flexcssPlugin(options = {}) {
       });
 
       if (shouldRecompile) {
-        console.log('🔄 FlexCSS: Recompilando...');
+        console.log('🔄 HUHM: Recompilando...');
         await compiler.build();
         
         // Fuerza recarga del CSS
@@ -57,11 +57,11 @@ function flexcssPlugin(options = {}) {
     // Para build de producción
     async buildEnd() {
       if (config.command === 'build') {
-        console.log('📦 FlexCSS: Compilación final...');
+        console.log('📦 HUHM: Compilación final...');
         await compiler.build();
       }
     }
   };
 }
 
-module.exports = flexcssPlugin;
+module.exports = huhmPlugin;

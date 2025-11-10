@@ -5,7 +5,7 @@ const Config = require('./config');
 const Parser = require('./parser');
 const Generator = require('./generator');
 
-class FlexCSSCompiler {
+class HUHMCompiler {
   constructor(configPath = null) {
     this.configLoader = new Config();
     this.config = this.configLoader.load(configPath);
@@ -113,4 +113,4 @@ class FlexCSSCompiler {
   }
 }
 
-module.exports = FlexCSSCompiler;
+module.exports = HUHMCompiler;

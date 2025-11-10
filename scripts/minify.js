@@ -5,7 +5,7 @@ const { minify } = require('terser');
 const pc = require('picocolors');
 
 async function minifyFile() {
-  console.log(pc.cyan('\n⚡ Minificando flexcss.js...\n'));
+  console.log(pc.cyan('\n⚡ Minificando HUHM.js...\n'));
 
   const rootDir = path.join(__dirname, '..');
   const inputPath = path.join(rootDir, 'dist', 'HUHM.js');
@@ -13,7 +13,7 @@ async function minifyFile() {
 
   // Verificar que existe el archivo de entrada
   if (!fs.existsSync(inputPath)) {
-    console.error(pc.red('❌ Error: No se encuentra dist/flexcss.js'));
+    console.error(pc.red('❌ Error: No se encuentra dist/HUHM.js'));
     console.log(pc.yellow('💡 Ejecuta primero: npm run build:browser'));
     process.exit(1);
   }
@@ -68,7 +68,7 @@ async function minifyFile() {
     console.log(pc.dim('   Archivo minificado:') + pc.green(`${minifiedSize} KB`) + pc.dim(` (-${reduction}%)`));
     console.log(pc.dim('   Gzipped:           ') + pc.cyan(`${gzippedSize} KB`));
     console.log('');
-    console.log(pc.dim('   Salida: ') + pc.white('dist/flexcss.min.js'));
+    console.log(pc.dim('   Salida: ') + pc.white('dist/HUHM.min.js'));
     console.log('');
 
   } catch (error) {
