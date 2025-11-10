@@ -181,7 +181,7 @@ module.exports = {
   ],
 
   // Archivo de salida
-  output: './dist/flexcss.css',
+  output: './dist/HUHM.css',
 
   // Breakpoints personalizados
   breakpoints: {

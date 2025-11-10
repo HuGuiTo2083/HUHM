@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUHM Framework - Test</title>
+    <!-- Incluir el CSS generado -->
+    <link rel="stylesheet" href="./dist/HUHM.css">
+    <!-- Incluir HUHM.js para referencias y copiar clases -->
+    <script src="./dist/HUHM.js"></script>
+</head>
+<body class="m|0| p|20px|">
+    
+    <!-- Header -->
+    <header class="bg|#3b82f6| p|20px| rounded|10px| m|0,0,20px,0|">
+        <h1 class="text|white| fontSize|32px| m|0|">HUHM Framework</h1>
+        <p class="text|white| opacity|0.9| m|10px,0,0,0|">Framework CSS moderno con sintaxis intuitiva</p>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div id="mainContainer" class="w|100%| p|20px| bg|#f3f4f6| rounded|8px|">
+        
+        <!-- Prueba de colores -->
+        <div class="m|0,0,20px,0|">
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Colores</h2>
+            <div class="flex|flex| gap|10px|">
+                <div class="w|100px| h|100px| bg|#ef4444| rounded|8px|"></div>
+                <div class="w|100px| h|100px| bg|#10b981| rounded|8px|"></div>
+                <div class="w|100px| h|100px| bg|#8b5cf6| rounded|8px|"></div>
+                <div class="w|100px| h|100px| bgColor|255,165,0| rounded|8px|"></div>
+            </div>
+        </div>
+
+        <!-- Prueba de clamp() -->
+        <div class="m|0,0,20px,0|">
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Texto Fluido (clamp)</h2>
+            <p class="fontSize|[16px,2vw,24px]| textColor|#1f2937|">
+                Este texto crece y decrece de forma fluida entre 16px y 24px
+            </p>
+        </div>
+
+        <!-- Prueba de Media Queries -->
+        <div class="m|0,0,20px,0|">
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Responsive</h2>
+            <div class="w|@mobile[100%],@tablets[50%],@Computer[33.33%]| h|100px| bg|#f59e0b| rounded|8px|">
+                <p class="p|20px| text|white|">Cambia de tamaño según dispositivo</p>
+            </div>
+        </div>
+
+        <!-- Prueba de calc() -->
+        <div class="m|0,0,20px,0|">
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Calc (ancho dinámico)</h2>
+            <div class="w|[100%-40px]| h|80px| bg|#8b5cf6| rounded|8px| p|20px|">
+                <p class="text|white|">Ancho: 100% - 40px</p>
+            </div>
+        </div>
+
+        <!-- Referencia a elemento (para calc) -->
+        <div id="boxReference" class="w|200px| h|100px| bg|#3b82f6| rounded|8px| m|0,0,20px,0| p|20px|">
+            <p class="text|white|">Caja de referencia: 200px</p>
+        </div>
+
+        <div class="m|0,0,20px,0|">
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Calc con Referencia</h2>
+            <div class="w|[100%-#boxReference:width]| h|80px| bg|#10b981| rounded|8px| p|20px|">
+                <p class="text|white|">Ancho: 100% - ancho de la caja anterior</p>
+            </div>
+        </div>
+
+        <!-- Botón original para copiar clases -->
+        <div class="m|0,0,20px,0|">
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Copiar Clases</h2>
+            <button id="btnOriginal" class="bg|#3b82f6| text|white| p|10px,20px| rounded|5px| border|0|">
+                Botón Original
+            </button>
+            <button class="#btnOriginal.classes m|0,0,0,10px|">
+                Botón Copiado
+            </button>
+        </div>
+
+        <!-- Grid -->
+        <div class="m|0,0,20px,0|">
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Grid Layout</h2>
+            <div class="display|grid| cols|repeat(3,1fr)| gap|10px|">
+                <div class="bg|#ef4444| h|80px| rounded|8px|"></div>
+                <div class="bg|#10b981| h|80px| rounded|8px|"></div>
+                <div class="bg|#8b5cf6| h|80px| rounded|8px|"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text|center| p|20px| m|20px,0,0,0|">
+        <p class="text|#6b7280| fontSize|14px|">
+            HUHM Framework © 2024 - Framework CSS con sintaxis moderna
+        </p>
+    </footer>
+
+</body>
+</html>
+
+
