@@ -1,4 +1,26 @@
+# Dependencies
 node_modules/
-dist/
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local config files
+huhm.config.js
+flexcss.config.js
+
+# Build outputs (comentar si quieres versionar dist/)
+# dist/

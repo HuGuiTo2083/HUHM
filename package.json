@@ -4,7 +4,7 @@
   "description": "Framework CSS moderno con sintaxis intuitiva y compilación JIT",
   "main": "src/compiler.js",
   "bin": {
-    "huhm": "./bin/flexcss.js"
+    "huhm": "./bin/huhm.js"
   },
   "exports": {
     ".": "./src/compiler.js",
