@@ -1,21 +1,21 @@
 const fs = require('fs');
-const FlexCSSCompiler = require('../src/compiler');
+const HUHMCompiler = require('../src/compiler');
 
 /**
- * Plugin de PostCSS para FlexCSS
+ * Plugin de PostCSS para HUHM Framework
  * Uso en postcss.config.js:
  * 
  * module.exports = {
  *   plugins: [
- *     require('flexcss-framework/plugins/postcss')
+ *     require('huhm-framework/plugins/postcss')
  *   ]
  * }
  */
 module.exports = (opts = {}) => {
-  const compiler = new FlexCSSCompiler(opts.config);
+  const compiler = new HUHMCompiler(opts.config);
 
   return {
-    postcssPlugin: 'flexcss',
+    postcssPlugin: 'huhm',
     
     async Once(root, { result }) {
       // Obtiene el contenido del archivo fuente
@@ -31,7 +31,7 @@ module.exports = (opts = {}) => {
         // Agrega el CSS generado al final del archivo
         root.append(generatedCSS);
       } catch (error) {
-        console.error('Error procesando FlexCSS:', error.message);
+        console.error('Error procesando HUHM:', error.message);
       }
     }
   };
