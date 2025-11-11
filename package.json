@@ -1,6 +1,6 @@
 {
   "name": "huhm",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Framework CSS moderno con sintaxis intuitiva y compilación JIT",
   "main": "src/compiler.js",
   "bin": {
