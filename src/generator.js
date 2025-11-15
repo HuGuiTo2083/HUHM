@@ -1,9 +1,11 @@
 const Parser = require('./parser');
+const JSGenerator = require('./jsGenerator');
 
 class Generator {
   constructor(config, parser) {
     this.config = config;
     this.parser = parser;
+    this.jsGenerator = new JSGenerator(config);
   }
 
   /**
@@ -40,10 +42,15 @@ class Generator {
     css += this.generateMediaQueries(mediaQueries);
 
     if (this.config.compiler.minify) {
-      return this.minify(css);
+      css = this.minify(css);
     }
 
-    return css;
+    // Genera JavaScript para referencias de elementos y copiado de clases
+    const elementReferences = this.parser.getElementReferences();
+    const classCopyReferences = this.parser.getClassCopyReferences();
+    const js = this.jsGenerator.generate(elementReferences, classCopyReferences);
+
+    return { css, js };
   }
 
   /**

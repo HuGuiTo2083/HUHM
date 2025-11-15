@@ -28,18 +28,25 @@ class HUHMCompiler {
         return;
       }
 
-      // Genera CSS
-      const css = this.generator.generate(classes);
+      // Genera CSS y JS
+      const { css, js } = this.generator.generate(classes);
 
-      // Guarda archivo
+      // Guarda archivos
       this.saveCSS(css);
+      if (js) {
+        this.saveJS(js);
+      }
 
       // Muestra estadísticas
       const stats = this.generator.getStats(css);
       console.log('\n📊 Estadísticas:');
       console.log(`   Reglas CSS: ${stats.rules}`);
-      console.log(`   Tamaño: ${stats.size}`);
+      console.log(`   Tamaño CSS: ${stats.size}`);
       console.log(`   Minificado: ${stats.minified ? 'Sí' : 'No'}`);
+      if (js) {
+        const jsSize = Buffer.byteLength(js, 'utf8');
+        console.log(`   Tamaño JS: ${(jsSize / 1024).toFixed(2)} KB`);
+      }
 
       console.log('\n✅ Compilación exitosa!');
     } catch (error) {
@@ -100,6 +107,23 @@ class HUHMCompiler {
 
     fs.writeFileSync(outputPath, css, 'utf-8');
     console.log(`\n💾 CSS generado en: ${path.relative(process.cwd(), outputPath)}`);
+  }
+
+  /**
+   * Guarda el JavaScript generado
+   */
+  saveJS(js) {
+    const cssOutputPath = path.resolve(this.config.output);
+    const jsOutputPath = cssOutputPath.replace(/\.css$/, '.js');
+    const dir = path.dirname(jsOutputPath);
+
+    // Crea directorio si no existe
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    fs.writeFileSync(jsOutputPath, js, 'utf-8');
+    console.log(`💾 JS generado en: ${path.relative(process.cwd(), jsOutputPath)}`);
   }
 
   /**

@@ -1,7 +1,7 @@
 /*
  * Generado por HUHM Framework
  * https://github.com/HuGuiTo2083/HUHM
- * Fecha: 2025-11-10T23:19:05.573Z
+ * Fecha: 2025-11-15T16:18:53.794Z
  */
 
 .m\|0\| {
@@ -32,7 +32,7 @@
   font-size: 32px;
 }
 
-.opacity\|0.9\| {
+.opacity\|0\.9\| {
   opacity: 0.9;
 }
 
@@ -104,8 +104,8 @@
   background: #f59e0b;
 }
 
-.w\|\[100\%-40px\]\| {
-  width: calc(100% - 40px);
+.w\|\[100vw-40px\]\| {
+  width: calc(100vw - 40px);
 }
 
 .h\|80px\| {
@@ -116,8 +116,8 @@
   width: 200px;
 }
 
-.w\|\[100\%-\#boxReference\:width\]\| {
-  width: calc(100% - var(--boxReference-width));
+.w\|\[100vw-\#boxReference\:width\]\| {
+  width: calc(100vw - var(--boxReference-width));
 }
 
 .p\|10px\,20px\| {
@@ -161,19 +161,19 @@
 }
 
 @media (max-width: 767px) {
-.w\|\@mobile\[100\%\]\,\@tablets\[50\%\]\,\@Computer\[33.33\%\]\| {
+.w\|\@mobile\[100\%\]\,\@tablets\[50\%\]\,\@Computer\[33\.33\%\]\| {
   width: 100%;
 }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-.w\|\@mobile\[100\%\]\,\@tablets\[50\%\]\,\@Computer\[33.33\%\]\| {
+.w\|\@mobile\[100\%\]\,\@tablets\[50\%\]\,\@Computer\[33\.33\%\]\| {
   width: 50%;
 }
 }
 
 @media (min-width: 1024px) {
-.w\|\@mobile\[100\%\]\,\@tablets\[50\%\]\,\@Computer\[33.33\%\]\| {
+.w\|\@mobile\[100\%\]\,\@tablets\[50\%\]\,\@Computer\[33\.33\%\]\| {
   width: 33.33%;
 }
 }

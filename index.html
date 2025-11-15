@@ -41,16 +41,23 @@
 
         <!-- Prueba de Media Queries -->
         <div class="m|0,0,20px,0|">
-            <h2 class="fontSize|24px| m|0,0,10px,0|">Responsive</h2>
-            <div class="w|@mobile[100%],@tablets[50%],@Computer[33.33%]| h|100px| bg|#f59e0b| rounded|8px|">
-                <p class="p|20px| text|white|">Cambia de tamaño según dispositivo</p>
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Responsive con Detección por Height</h2>
+            <div class="w|@mobile[100%],@tablet[50%],@largeTablet[40%],@laptop[33.33%],@desktop[25%],@largeScreen[20%]| h|100px| bg|#f59e0b| rounded|8px|">
+                <p class="p|20px| text|white| fontSize|@mobile[12px],@tablet[14px],@largeTablet[16px],@laptop[18px]|">
+                    📱 Mobile: 100% | 
+                    📱 Tablet: 50% | 
+                    📱 LargeTablet: 40% | 
+                    💻 Laptop: 33% | 
+                    🖥️ Desktop: 25% | 
+                    🖥️ LargeScreen: 20%
+                </p>
             </div>
         </div>
 
         <!-- Prueba de calc() -->
         <div class="m|0,0,20px,0|">
             <h2 class="fontSize|24px| m|0,0,10px,0|">Calc (ancho dinámico)</h2>
-            <div class="w|[100%-40px]| h|80px| bg|#8b5cf6| rounded|8px| p|20px|">
+            <div class="w|[100vw-40px]| h|80px| bg|#8b5cf6| rounded|8px| p|20px|">
                 <p class="text|white|">Ancho: 100% - 40px</p>
             </div>
         </div>
@@ -61,9 +68,9 @@
         </div>
 
         <div class="m|0,0,20px,0|">
-            <h2 class="fontSize|24px| m|0,0,10px,0|">Calc con Referencia</h2>
-            <div class="w|[100%-#boxReference:width]| h|80px| bg|#10b981| rounded|8px| p|20px|">
-                <p class="text|white|">Ancho: 100% - ancho de la caja anterior</p>
+            <h2 class="fontSize|24px| m|0,0,10px,0|">Calc con Referencia a Elemento</h2>
+            <div class="w|[100vw-#boxReference:width]| h|80px| bg|#10b981| rounded|8px| p|20px|">
+                <p class="text|white|">Ancho: 100vw - ancho de la caja anterior</p>
             </div>
         </div>
 

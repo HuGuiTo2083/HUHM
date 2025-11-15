@@ -5,6 +5,8 @@ class Parser {
   constructor(config) {
     this.config = config;
     this.classesFound = new Set();
+    this.elementReferences = new Set(); // Tracks #elementId:property references
+    this.classCopyReferences = new Set(); // Tracks #elementId.classes references
   }
 
   /**
@@ -28,12 +30,30 @@ class Parser {
         let classRefMatch;
         while ((classRefMatch = classRefRegex.exec(classString)) !== null) {
           const elementId = classRefMatch[1];
-          // Busca el elemento con ese ID y extrae sus clases
-          const elementRegex = new RegExp(`id=["']${elementId}["'][^>]*class(?:Name)?=["']([^"']+)["']`, 'g');
-          const elementMatch = elementRegex.exec(content);
-          if (elementMatch) {
-            const referencedClasses = this.parseClassString(elementMatch[1]);
-            referencedClasses.forEach(cls => this.classesFound.add(cls.trim()));
+          
+          // Registra para JavaScript runtime
+          this.classCopyReferences.add(elementId);
+          
+          // Busca el elemento con ese ID y extrae sus clases (compilación)
+          // Soporta ambos órdenes: id...class y class...id
+          const patterns = [
+            new RegExp(`id=["']${elementId}["'][^>]*class(?:Name)?=["']([^"']+)["']`, 'gs'),
+            new RegExp(`class(?:Name)?=["']([^"']+)["'][^>]*id=["']${elementId}["']`, 'gs')
+          ];
+          
+          let found = false;
+          for (const pattern of patterns) {
+            const elementMatch = pattern.exec(content);
+            if (elementMatch) {
+              const referencedClasses = this.parseClassString(elementMatch[1]);
+              referencedClasses.forEach(cls => this.classesFound.add(cls.trim()));
+              found = true;
+              break;
+            }
+          }
+          
+          if (!found) {
+            console.warn(`⚠️  Elemento no encontrado para copiar clases: #${elementId}`);
           }
         }
         
@@ -136,6 +156,8 @@ class Parser {
     console.log(`📁 Encontrados ${files.length} archivos`);
 
     this.classesFound.clear();
+    this.elementReferences.clear();
+    this.classCopyReferences.clear();
 
     for (const file of files) {
       try {
@@ -381,6 +403,8 @@ class Parser {
     // Esto se hace DESPUÉS de agregar espacios para que los guiones de las variables no se afecten
     const refRegex = /#([a-zA-Z0-9_-]+):([a-zA-Z-]+)/g;
     calcExpression = calcExpression.replace(refRegex, (match, elementId, property) => {
+      // Track this reference for JS generation
+      this.elementReferences.add(JSON.stringify({ elementId, property }));
       return `var(--${elementId}-${property})`;
     });
 
@@ -397,6 +421,20 @@ class Parser {
   }
 
   /**
+   * Obtiene todas las referencias a elementos encontradas
+   */
+  getElementReferences() {
+    return Array.from(this.elementReferences).map(ref => JSON.parse(ref));
+  }
+
+  /**
+   * Obtiene todas las referencias de copiado de clases
+   */
+  getClassCopyReferences() {
+    return Array.from(this.classCopyReferences);
+  }
+
+  /**
    * Escapa caracteres especiales para selectores CSS
    */
   escapeSelector(className) {
@@ -406,6 +444,7 @@ class Parser {
       .replace(/:/g, '\\:')
       .replace(/,/g, '\\,')
       .replace(/%/g, '\\%')
+      .replace(/\./g, '\\.')  // Escapar puntos decimales
       .replace(/\s/g, '\\ ')
       .replace(/\(/g, '\\(')
       .replace(/\)/g, '\\)')
